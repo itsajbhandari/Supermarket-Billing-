@@ -18,7 +18,7 @@ public:
     void edit();
     void remove();
     void list();
-    void reciept();
+    void receipt();
 };
 
 void shopping ::menu()
@@ -114,7 +114,7 @@ m:
         break;
 
     case 3:
-        rename();
+        remove();
         break;
 
     case 4:
@@ -165,8 +165,8 @@ m:
     float d;
     string n;
 
-    count << "\n Add new Product ";
-    count << "\n Code of the product ";
+    cout << "\n Add new Product ";
+    cout << "\n Code of the product ";
     cin >> pcode;
     count << "\n Enter the name of the product ";
     cin >> pname;
