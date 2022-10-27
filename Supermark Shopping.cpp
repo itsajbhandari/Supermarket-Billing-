@@ -168,11 +168,11 @@ m:
     cout << "\n Add new Product ";
     cout << "\n Code of the product ";
     cin >> pcode;
-    count << "\n Enter the name of the product ";
+    cout << "\n Enter the name of the product ";
     cin >> pname;
-    count << "\n Enter the price of the product ";
+    cout << "\n Enter the price of the product ";
     cin >> price;
-    count << "\n Enter discount on the product ";
+    cout << "\n Enter discount on the product ";
     cin >> dis;
 
     data.open("database.txt", ios::in)
