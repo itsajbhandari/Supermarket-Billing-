@@ -80,7 +80,7 @@ m:
     }
     }
     goto m;
-}
+};
 void shopping ::administrator()
 {
 m:
@@ -125,7 +125,7 @@ m:
         cout << "Invalid Choice \n";
     }
     goto m;
-}
+};
 
 void shopping ::buyer()
 {
@@ -153,7 +153,7 @@ m:
         cout << "Invalid Choice \n";
     }
     goto m;
-}
+};
 
 void shopping ::add()
 {
@@ -175,9 +175,9 @@ m:
     cout << "\n Enter discount on the product ";
     cin >> dis;
 
-    data.open("database.txt", ios::in)
+    data.open("database.txt", ios::in);
 
-        if (!data)
+    if (!data)
     {
         data.open("database.txt", ios::app | ios::out);
         data << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
@@ -186,7 +186,7 @@ m:
     else
     {
 
-        data >> c << n << p << d;
+        data >> c >> n >> p >> d;
 
         while (!data.eof())
         {
@@ -195,20 +195,21 @@ m:
             {
                 token++;
             }
-            data >> c << n << p << d;
+            data >> c >> n >> p >> d;
         }
         data.close();
 
         if (token == 1)
-            goto m : else
-            {
-                data.open("database.txt", ios::app | ios::out);
-                data << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
-                data.close();
-            }
+            goto m;
+        else
+        {
+            data.open("database.txt", ios::app | ios::out);
+            data << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
+            data.close();
+        }
     }
     cout << "\n\n\n Record Inserted Successfuly";
-}
+};
 void shopping::edit()
 {
 
@@ -220,14 +221,14 @@ void shopping::edit()
     float d;
     string n;
 
-    count << "\n Modify the Record ";
-    count << "\n Product Code ";
+    cout << "\n Modify the Record ";
+    cout << "\n Product Code ";
     cin >> pkey;
     data.open("database.txt", ios::in);
     if (!data)
     {
 
-        count << "\n File Does'nt Exist ";
+        cout << "\n File Does'nt Exist ";
     }
     else
     {
@@ -240,23 +241,23 @@ void shopping::edit()
             if (pkey == pcode)
             {
 
-                Cout << "\nProduct new code";
-                Cin >> c;
-                Cout << "\n Name of the product ";
-                Cin >> n;
-                Cout << "\n Price ";
-                Cin >> p;
-                Cout << "\n Discount ";
-                Cin >> d;
+                cout << "\nProduct new code";
+                cin >> c;
+                cout << "\n Name of the product ";
+                cin >> n;
+                cout << "\n Price ";
+                cin >> p;
+                cout << "\n Discount ";
+                cin >> d;
 
                 data1 << "" << c << "" << n << "" << p << "" << d << ""
                       << "\n";
-                Cout << "\n Record Edit Successfully ";
-                token++
+                cout << "\n Record Edit Successfully ";
+                token++;
             }
             else
             {
-                data1 << "" << pcode << "" << pname << "" << price << "" << disc << ""
+                data1 << "" << pcode << "" << pname << "" << price << "" << dis << ""
                       << "\n";
             }
             data >> pcode >> pname >> price >> dis;
@@ -265,14 +266,14 @@ void shopping::edit()
         data1.close();
 
         remove("database.txt");
-        rename("database1.txt", "database.txt");
+        remove("database1.txt", "database.txt");
 
         if (token == 0)
         {
             cout << "\n record not found sorry";
         }
     }
-}
+};
 
 void shopping ::remove()
 {
@@ -284,7 +285,7 @@ void shopping ::remove()
     cout << "delete product";
 
     cout << "enter product code ";
-    cin >> pkey();
+    cin >> pkey;
     data.open("database.txt", ios::in);
 
     if (!data)
@@ -304,11 +305,11 @@ void shopping ::remove()
             {
 
                 cout << "product delete successfuly";
-                token++
+                token++;
             }
             else
             {
-                data1 << "" << pcode << "" << pname << "" << price << "" << disc << "<<\n";
+                data1 << "" << pcode << "" << pname << "" << price << "" << dis << "<<\n";
             }
             data >> pcode >> pname >> price >> dis;
         }
@@ -318,20 +319,19 @@ void shopping ::remove()
         remove("database1.txt", "database.txt");
 
         if (token == 0)
-            (
-                count << ("record not found");
-
-            )
+        {
+            cout << ("record not found");
+        }
     }
-}
+};
 
 void shopping ::list()
 {
     fstream data;
     data.open("database.txt", ios::in);
-    count << ("\n     ");
-    count << ("prono\t tname\t tprice     \n");
-    count << ("\n     ");
+    cout << ("\n     ");
+    cout << ("prono\t tname\t tprice     \n");
+    cout << ("\n     ");
     data >> pcode >> pname >> price >> dis;
     while (!data.eof())
     {
@@ -339,12 +339,12 @@ void shopping ::list()
         data >> pcode >> pname >> price >> dis;
     }
     data.close();
-}
+};
 
-void shopping ::reciept()
+void shopping ::receipt()
 {
 
-    ftream data;
+    fstream data;
     int arrc[100];
     int arrq[100];
     char choice;
@@ -373,16 +373,16 @@ void shopping ::reciept()
 
         do
         {
-            m;
+        m:
             cout << "Enter Product code";
-            cin >> arrc(c);
+            cin >> arrc[c];
             cout << "Enter Quantity";
-            cin >> arrq(c);
+            cin >> arrq[c];
 
-            for (int i = 0, i < c; i++)
+            for (int i = 0; i < c; i++)
             {
 
-                if (arrc[c] == arrc{i})
+                if (arrc[c] == arrc[i])
                 {
 
                     cout << "\n  Duplicate Product code please try again";
@@ -390,7 +390,7 @@ void shopping ::reciept()
                 }
             }
             c++;
-            Cout << "do you want to add another product\n";
+            cout << "do you want to add another product\n";
             cin >> choice;
 
         } while (choice == "y");
@@ -406,7 +406,7 @@ void shopping ::reciept()
                 if (pcode == arrc[i])
                 {
 
-                    amaount = price * arrq[i];
+                    amount = price * arrq[i];
                     dis = amount - (amount * dis / 100);
                     total = total + dis;
                     cout << "\n"
@@ -415,11 +415,11 @@ void shopping ::reciept()
                 data >> pcode >> pname >> price >> dis;
             }
         }
-        data.closee();
+        data.close();
     }
     cout << "\n\n __________________";
     cout << "total amount : " << total;
-}
+};
 int main()
 {
 
