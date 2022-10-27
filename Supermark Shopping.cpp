@@ -16,7 +16,7 @@ public:
     void buyer();
     void add();
     void edit();
-    void remove();
+    void rem();
     void list();
     void receipt();
 };
@@ -114,7 +114,7 @@ m:
         break;
 
     case 3:
-        remove();
+        rem();
         break;
 
     case 4:
@@ -266,7 +266,7 @@ void shopping::edit()
         data1.close();
 
         remove("database.txt");
-        remove("database1.txt", "database.txt");
+        rename("database1.txt", "database.txt");
 
         if (token == 0)
         {
@@ -275,7 +275,7 @@ void shopping::edit()
     }
 };
 
-void shopping ::remove()
+void shopping ::rem()
 {
 
     fstream data, data1;
@@ -316,7 +316,7 @@ void shopping ::remove()
         data.close();
         data1.close();
         remove("database.txt");
-        remove("database1.txt", "database.txt");
+        rename("database1.txt", "database.txt");
 
         if (token == 0)
         {
@@ -349,12 +349,12 @@ void shopping ::receipt()
     int arrq[100];
     char choice;
     int c = 0;
-    float amount;
+    float amount = 0;
     float dis = 0;
-    float total;
+    float total = 0;
 
     cout << " RECIEPT";
-    data.open(database.txt, ios::in);
+    data.open("database.txt", ios::in);
     if (!data)
     {
 
@@ -390,7 +390,7 @@ void shopping ::receipt()
                 }
             }
             c++;
-            cout << "do you want to add another product\n";
+            cout << "do you want to add another product? if yes then press y else no \n";
             cin >> choice;
 
         } while (choice == "y");
@@ -399,7 +399,7 @@ void shopping ::receipt()
 
         for (int i = 0; i < c; i++)
         {
-            data.open("database.txt" ios::in);
+            data.open("database.txt", ios::in);
             data >> pcode >> pname >> price >> dis;
             while (!data.eof())
             {
@@ -419,7 +419,7 @@ void shopping ::receipt()
     }
     cout << "\n\n __________________";
     cout << "total amount : " << total;
-};
+}
 int main()
 {
 
